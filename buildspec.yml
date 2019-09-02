@@ -1,0 +1,71 @@
+version: 0.2
+
+env:
+  variables:
+    DB_ROOT_USER: "root"
+    DB_ROOT_PASSWORD: "redhat2614"
+    DB_HOST: "localhost"
+    DB_APP_USER : "aleemapp_dbuser"
+    DB_APP_PASSWORD: "password"
+    DB_SOCKET: "/var/run/mysqld/mysqld.sock"
+    KEYID: "5072E1F5"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+  pre_build:
+    commands:
+      - echo "===============================i am executing buidspec.yml================================================"
+      - echo "Before running tests"
+      - ls /root
+      - whoami
+      - pwd
+      - apt-get update
+      - apt-get -y install mysql-server
+      - echo "======mysql installed successfully====="
+      - service mysql start
+      - service mysql status
+      - ps -ef |grep mysql
+      - echo "======mysql service started ===="
+      - mysqladmin --user=root password $DB_ROOT_PASSWORD
+      - echo "=======mysql root password created successfully======"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="DELETE FROM mysql.user WHERE User='';"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="select * from mysql.user;"
+      - echo "======= Anonymous users deleted successfully ======="
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="select * from mysql.user;"
+      - echo "======= Mysql Root user remote access disabled======"
+     # - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="DROP DATABASE test;"
+     # - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%';"
+     # - echo "======= Mysql test database deleted =========="
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="FLUSH PRIVILEGES;"
+      - echo "===== Run FLUSH PRIVILEGES successfull"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="CREATE USER 'aleemapp_dbuser'@'loaclhost' IDENTIFIED BY 'password';"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="CREATE DATABASE aleemappdb;"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="GRANT ALL PRIVILEGES ON aleemappdb.* to 'aleemapp_dbuser'@'loaclhost'"
+      - mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="FLUSH PRIVILEGES;"
+      - echo "===== App DB user Created Run FLUSH PRIVILEGES successfull"
+      - apt-get -y install apache2
+      - echo "====== Apache install successfull ======"
+      - mkdir /tutorialmyprojectdir
+      - echo "===== App Directory created successfull ========="
+
+
+  build:
+    commands:
+      - echo "Running all unit tests"
+#      - python manage.py test
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
+cache:
+  paths:
+    - '/root/.cache/pip/**/*'
+    - '/var/cache/apt/archives/**/*'
+    - '/var/lib/apt/lists/**/*'
+    - '/etc/apt/sources.list.d/mysql.list'
+    - '/etc/apt/sources.list'

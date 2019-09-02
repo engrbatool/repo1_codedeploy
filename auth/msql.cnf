@@ -1,0 +1,5 @@
+[client]
+database = 'tutorialdb'
+username = 'batool'
+password = 'Rhce2614!'
+default-character-set = 'utf8'

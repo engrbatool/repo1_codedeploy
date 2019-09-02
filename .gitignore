@@ -1,0 +1,9 @@
+Edit 
+.Python  
+bin/  
+include/  
+lib/  
+*.py[cod]  
+*.sqlite3  
+pip-selfcheck.json 
+/tutorialmyprojectdir/site/logs 

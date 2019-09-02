@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /tutorialmyprojectdir/
+    runas: root
+  - source: /apache/000-default.conf
+    destination: /etc/apache2/sites-enabled/
+    runas: root
+  - source: /apache/000-default.conf
+    destination: /etc/apache2/sites-available/
+
+hooks:
+  BeforeInstall:
+      - location: server_configs/scripts/before_install.sh
+  AfterInstall:
+      - location: server_configs/scripts/after_install.sh
