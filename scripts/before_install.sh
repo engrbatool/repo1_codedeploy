@@ -1,7 +1,7 @@
 #!/bin/bash
-
+echo "i am before_install.sh"
 # Install libaries
-echo whoami
+whoami
 pwd
 mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
