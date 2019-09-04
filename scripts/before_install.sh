@@ -1,6 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Install libaries
+echo whoami
+pwd
+mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
 virtualenv -p python3 venv
 source venv/bin/activate
