@@ -1,6 +1,9 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
+echo "i am before_install.sh"
 # Install libaries
+whoami
+pwd
+mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
 virtualenv -p python3 venv
 source venv/bin/activate
