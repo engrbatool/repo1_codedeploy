@@ -4,14 +4,21 @@ echo "i am before_install.sh"
 whoami
 pwd
 apt-get upgrade 
-apt-get install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv
+#apt-get install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv
 echo "packages installed successfully"
 [ -d /tutorialmyprojectdir ] || mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
 #virtualenv -p python3 venv
-apt-get install -y python3-venv
-virtualenv -p python3 venv
+apt-get install python3-pip
+echo "pip is installed+++++++++++++"
+pip3 install virtualenv 
+echo" ++++++++++++++ install virtualenv using pip3 successfully"
+virtualenv  venv 
+echo"+++++++++++++ create virtualenve successfully"
+#source venv/bin/activate
 source venv/bin/activate
+
+
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --no-input
