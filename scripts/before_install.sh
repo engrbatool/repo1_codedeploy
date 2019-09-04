@@ -12,9 +12,9 @@ cd /tutorialmyprojectdir
 apt-get install python3-pip
 echo "pip is installed+++++++++++++"
 pip3 install virtualenv 
-echo" ++++++++++++++ install virtualenv using pip3 successfully"
+echo " ++++++++++++++ install virtualenv using pip3 successfully"
 virtualenv  venv 
-echo"+++++++++++++ create virtualenve successfully"
+echo "+++++++++++++ create virtualenve successfully"
 #source venv/bin/activate
 source venv/bin/activate
 
