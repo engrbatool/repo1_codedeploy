@@ -4,7 +4,7 @@ echo "i am before_install.sh"
 whoami
 pwd
 apt-get upgrade 
-#apt-get install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv
+apt-get install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv apache2 mysql-server
 echo "packages installed successfully"
 [ -d /tutorialmyprojectdir ] || mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
