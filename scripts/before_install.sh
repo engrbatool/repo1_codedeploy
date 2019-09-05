@@ -8,6 +8,11 @@ apt-get upgrade
 echo "packages installed successfully"
 [ -d /tutorialmyprojectdir ] || mkdir /tutorialmyprojectdir
 cd /tutorialmyprojectdir
+if [ -d /tutorialmyprojectdir ]; then
+	    rm -rf /tutorialmyprojectdir
+    fi
+    mkdir -vp /tutorialmyprojectdir
+
 #virtualenv -p python3 venv
 apt-get install python3-pip
 echo "pip is installed+++++++++++++"
