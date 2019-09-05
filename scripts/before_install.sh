@@ -19,7 +19,8 @@ echo "+++++++++++++ create virtualenve successfully"
 source venv/bin/activate
 
 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
 python manage.py migrate
 python manage.py collectstatic --no-input
 
