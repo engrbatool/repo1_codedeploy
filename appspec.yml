@@ -4,10 +4,10 @@ files:
   - source: /
     destination: /tutorialmyprojectdir/
     runas: root
-  - source: /apache/000-default.conf
+  - source: /apache/django-apache.conf
     destination: /etc/apache2/sites-enabled/
     runas: root
-  - source: /apache/000-default.conf
+  - source: /apache/django-apache.conf
     destination: /etc/apache2/sites-available/
 
 hooks:
