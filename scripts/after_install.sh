@@ -40,7 +40,7 @@ cd /tutorialmyprojectdir
 virtualenv -p python3 venv
 
 source bin/activate
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 /tutorialmyprojectdir/venv/bin/python  /tutorialmyprojectdir/src/manage.py makemigrations
 /tutorialmyprojectdir/venv/bin/python  /tutorialmyprojectdir/src/manage.py migrate
 
