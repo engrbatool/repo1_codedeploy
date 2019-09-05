@@ -18,8 +18,8 @@ echo "+++++++++++++ create virtualenve successfully"
 #source venv/bin/activate
 source venv/bin/activate
 
-
-pip3 install -r requirements.txt
+find . -regex '.*requirements.txt$'
+pip install -r requirements.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
 python manage.py migrate
 python manage.py collectstatic --no-input
