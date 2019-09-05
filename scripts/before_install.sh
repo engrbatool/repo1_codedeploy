@@ -24,9 +24,10 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 #python -m pip install -r /path/to/requirements.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
-python manage.py migrate
-python manage.py collectstatic --no-input
-
+echo " ============start work on manage.py====="
+python /src/manage.py migrate
+python /src/manage.py collectstatic --no-input
+echo " =======done manage.py work ======"
 # Set permission for all files
 #sudo chown -R www-data:www-data /var/www/
 
