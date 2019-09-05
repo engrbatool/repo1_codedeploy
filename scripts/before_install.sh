@@ -25,8 +25,8 @@ pip install -r requirements.txt
 #python -m pip install -r /path/to/requirements.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
 echo " ============start work on manage.py====="
-python3 /manage.py migrate
-python3  /manage.py collectstatic --no-input
+python3 manage.py migrate
+python3  manage.py collectstatic --no-input
 echo " =======done manage.py work ======"
 # Set permission for all files
 #sudo chown -R www-data:www-data /var/www/
