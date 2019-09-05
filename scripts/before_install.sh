@@ -19,7 +19,9 @@ echo "+++++++++++++ create virtualenve successfully"
 source venv/bin/activate
 
 find . -regex '.*requirements.txt$'
-pip install -r requirements.txt
+echo " ================find requirements file done =========="
+
+pip install -r /tutorialmyprojectdir/requirements.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
 python manage.py migrate
 python manage.py collectstatic --no-input
