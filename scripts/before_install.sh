@@ -20,9 +20,9 @@ source venv/bin/activate
 
 find . -regex '.*requirements.txt$'
 echo " ================find requirements file done =========="
-
-#pip install -r requirements.txt
-python -m pip install -r /path/to/requirements.txt
+pip freeze > requirements.txt
+pip install -r requirements.txt
+#python -m pip install -r /path/to/requirements.txt
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++success requirements+++"
 python manage.py migrate
 python manage.py collectstatic --no-input
