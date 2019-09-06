@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'tutorialproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tutorialdb',
-        'USER': 'batool',
-        'PASSWORD': 'Rhce2614!',
+        'NAME': 'aleemappdb',
+        'USER': 'aleemapp_dbuser',
+        'PASSWORD': 'password',
         'PORT': '3306',
         'HOST': 'localhost',
     }

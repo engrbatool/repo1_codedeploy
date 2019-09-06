@@ -4,6 +4,7 @@ echo "i am after_install.sh"
 DB_ROOT_USER="root"
 DB_ROOT_PASSWORD="redhat2614"
 DB_HOST="localhost"
+DATABASE_Name= "aleemappdb"
 DB_APP_USER="aleemapp_dbuser"
 DB_APP_PASSWORD="password"
 DB_SOCKET="/var/run/mysqld/mysqld.sock"
@@ -28,9 +29,9 @@ echo "======= Mysql Root user remote access disabled======"
      # - echo "======= Mysql test database deleted =========="
 mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="FLUSH PRIVILEGES;"
 echo "===== Run FLUSH PRIVILEGES successfull"
-mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="CREATE USER 'aleemapp_dbuser'@'loaclhost' IDENTIFIED BY 'password';"
+mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="CREATE USER 'aleemapp_dbuser'@'localhost' IDENTIFIED BY 'password';"
 mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="CREATE DATABASE aleemappdb;"
-mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="GRANT ALL PRIVILEGES ON aleemappdb.* to 'aleemapp_dbuser'@'loaclhost'"
+mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="GRANT ALL PRIVILEGES ON aleemappdb.* to 'aleemapp_dbuser'@'localhost'"
 mysql --user=$DB_ROOT_USER --password=$DB_ROOT_PASSWORD  --execute="FLUSH PRIVILEGES;"
 echo "===== App DB user Created Run FLUSH PRIVILEGES successfull"
 
@@ -39,7 +40,7 @@ cd /tutorialmyprojectdir
 
 virtualenv -p python3 venv
 
-source bin/activate
+source venv/bin/activate
 pip3 install -r requirements.txt
 /tutorialmyprojectdir/venv/bin/python  /tutorialmyprojectdir/src/manage.py makemigrations
 /tutorialmyprojectdir/venv/bin/python  /tutorialmyprojectdir/src/manage.py migrate
